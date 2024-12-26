@@ -1,0 +1,34 @@
+﻿@model IEnumerable<hotel.Models.Service>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+<p class="text-right">
+    <a href="@Url.Action("Create", "Services")" class="btn btn-primary btn-lg">Create New Service</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Name</td>
+                <td>@service.Price</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Services", new { id = service.Id })" class="btn btn-warning btn-sm">Edit</a> |
+                    <a href="@Url.Action("Delete", "Services", new { id = service.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

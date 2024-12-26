@@ -1,0 +1,36 @@
+﻿@model IEnumerable<hotel.Models.Billing>
+
+@{
+    ViewData["Title"] = "Billings";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Billings")" class="btn btn-primary">Create New Billing</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Amount Due</th>
+            <th>Billing Date</th>
+            <th>Payment Method</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var billing in Model)
+        {
+            <tr>
+                <td>@billing.AmountDue</td>
+                <td>@billing.BillingDate</td>
+                <td>@billing.PaymentMethod</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Billings", new { id = billing.Id })" class="btn btn-warning">Edit</a> |
+                    <a href="@Url.Action("Delete", "Billings", new { id = billing.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

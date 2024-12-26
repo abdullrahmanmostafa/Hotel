@@ -1,0 +1,36 @@
+﻿@model IEnumerable<hotel.Models.Guest>
+
+@{
+    ViewData["Title"] = "Guests";
+}
+
+<h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Guests")" class="btn btn-success btn-lg">Create New Guest</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var guest in Model)
+        {
+            <tr>
+                <td>@guest.FullName</td>
+                <td>@guest.Email</td>
+                <td>@guest.Phone</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Guests", new { id = guest.Id })" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="@Url.Action("Delete", "Guests", new { id = guest.Id })" class="btn btn-danger btn-sm ms-2">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

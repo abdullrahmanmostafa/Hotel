@@ -1,0 +1,34 @@
+﻿@model IEnumerable<hotel.Models.RoomAvailability>
+
+@{
+    ViewData["Title"] = "Room Availability";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create", "RoomAvailabilities")" class="btn btn-primary">Create New Availability</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room</th>
+            <th>Available</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.Room.Name</td>
+                <td>@room.IsAvailable</td>
+                <td>
+                    <a href="@Url.Action("Edit", "RoomAvailabilities", new { id = room.Id })" class="btn btn-warning">Edit</a> |
+                    <a href="@Url.Action("Delete", "RoomAvailabilities", new { id = room.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

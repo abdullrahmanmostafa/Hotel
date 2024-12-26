@@ -1,0 +1,19 @@
+﻿@model hotel.Models.RoomAvailability
+
+@{
+    ViewData["Title"] = "Delete Room Availability";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-danger">
+    <h3>Are you sure you want to delete this availability?</h3>
+    <p>Room: @Model.Room.Name</p>
+    <p>Available: @Model.IsAvailable</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "RoomAvailabilities")" class="btn btn-secondary">Cancel</a>
+</form>

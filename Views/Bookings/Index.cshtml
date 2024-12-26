@@ -1,0 +1,41 @@
+﻿@model IEnumerable<hotel.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Bookings")" class="btn btn-success">Create New Booking</a>
+</p>
+
+<table class="table table-striped table-bordered mt-4">
+    <thead class="table-dark">
+        <tr>
+            <th>Room</th>
+            <th>Guest</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Total Amount</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Room.Name</td>
+                <td>@booking.Guest.FullName</td>
+                <td>@booking.CheckInDate.ToString("yyyy-MM-dd")</td>
+                <td>@booking.CheckOutDate.ToString("yyyy-MM-dd")</td>
+                <td>@booking.TotalAmount.ToString("C")</td>
+                <td class="text-center">
+                    <a href="@Url.Action("Edit", "Bookings", new { id = booking.Id })" class="btn btn-warning btn-sm">Edit</a>
+                    <span>|</span>
+                    <a href="@Url.Action("Delete", "Bookings", new { id = booking.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿@model hotel.Models.Room
+
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Name:</strong></div>
+        <div class="col-md-9">@Model.Name</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Type:</strong></div>
+        <div class="col-md-9">@Model.Type</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Price:</strong></div>
+        <div class="col-md-9">@Model.Price</div>
+    </div>
+</div>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary btn-lg">Back to List</a>

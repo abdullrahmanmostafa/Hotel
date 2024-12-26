@@ -1,0 +1,26 @@
+﻿@model hotel.Models.Billing
+
+@{
+    ViewData["Title"] = "Create Billing";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="AmountDue" class="control-label"></label>
+        <input asp-for="AmountDue" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillingDate" class="control-label"></label>
+        <input asp-for="BillingDate" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PaymentMethod" class="control-label"></label>
+        <input asp-for="PaymentMethod" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
